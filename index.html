@@ -96,9 +96,12 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25}
 /* PRINCIPAL */
 .principal{background:var(--white);color:var(--ink);padding:76px 0}
 .pr-grid{display:grid;gap:36px;align-items:center}
+.principal{background:#F3F0E8}
 .pr-photo{position:relative;max-width:380px}
-.pr-photo img{width:100%;border:1px solid #E3DFD2;box-shadow:14px 14px 0 var(--navy)}
-.pr-photo::after{content:"";position:absolute;top:-12px;left:-12px;width:70px;height:70px;border-top:3px solid var(--gold);border-left:3px solid var(--gold)}
+.pr-photo img{width:100%;display:block}
+.pr-photo::before{content:"";position:absolute;right:-14px;bottom:-14px;width:82%;height:60%;background:var(--navy);z-index:-1}
+.pr-photo::after{content:"";position:absolute;top:-14px;left:-14px;width:76px;height:76px;border-top:4px solid var(--gold);border-left:4px solid var(--gold)}
+.pr-photo .scribble{position:absolute;left:-4%;bottom:-12px;width:108%;height:auto;pointer-events:none}
 .pr-info h2{font-size:clamp(1.6rem,4vw,2.3rem)}
 .pr-info .creds{color:var(--gold);font-weight:700;letter-spacing:.1em;font-size:.85rem;text-transform:uppercase;margin:8px 0 18px;color:#9c7d1c}
 .pr-info p{color:var(--ink-soft);max-width:58ch;margin-bottom:14px}
@@ -117,6 +120,14 @@ h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.25}
 .f-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
 .f-note{font-size:.8rem;color:var(--muted);margin-top:16px}
 
+/* FAQ */
+.faq{background:var(--white);color:var(--ink);padding:76px 0}
+.faq details{border:1px solid #CBB86B;border-radius:6px;margin-bottom:12px;background:#fff}
+.faq summary{cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 20px;font-weight:700;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-size:1.4rem;font-weight:400;color:var(--ink)}
+.faq details[open] summary::after{content:"–"}
+.faq .a{padding:0 20px 18px;color:var(--ink-soft)}
 /* CONTACT */
 .contact{background:var(--navy-3);padding:76px 0}
 .c-grid{display:grid;gap:16px}
@@ -152,6 +163,7 @@ footer p{font-size:.82rem;color:var(--muted)}
         <li><a href="#about">About</a></li>
         <li><a href="#practice">Practice Areas</a></li>
         <li><a href="#principal">Our Principal</a></li>
+        <li><a href="#faq">FAQs</a></li>
         <li><a href="#contact">Contact</a></li>
         <li><a class="btn nav-cta" href="#enquiry">Book Consultation</a></li>
       </ul>
@@ -163,6 +175,7 @@ footer p{font-size:.82rem;color:var(--muted)}
     <a href="#practice" onclick="mnav.classList.remove('open')">Practice Areas</a>
     <a href="#principal" onclick="mnav.classList.remove('open')">Our Principal</a>
     <a href="#enquiry" onclick="mnav.classList.remove('open')">Book Consultation</a>
+    <a href="#faq" onclick="mnav.classList.remove('open')">FAQs</a>
     <a href="#contact" onclick="mnav.classList.remove('open')">Contact</a>
   </div>
 </header>
@@ -183,7 +196,7 @@ footer p{font-size:.82rem;color:var(--muted)}
 <div class="band">
   <div class="band-in">
     <div><b>20+</b><span>Years at the Bar</span></div>
-    <div><b>6</b><span>Practice Areas</span></div>
+    <div><b>7</b><span>Practice Areas</span></div>
     <div><b>Abuja</b><span>Wuse Zone 5, FCT</span></div>
   </div>
 </div>
@@ -199,7 +212,7 @@ footer p{font-size:.82rem;color:var(--muted)}
     </div>
     <div class="about-side">
       <p>"The establishment of the Chambers is the manifestation of a dream to serve humanity through legal practice."</p>
-      <cite>— Imegu Christopher, Esq., Principal Counsel</cite>
+      <cite>— Christopher Imegu, Esq., Principal Counsel</cite>
     </div>
   </div>
 </section>
@@ -209,34 +222,39 @@ footer p{font-size:.82rem;color:var(--muted)}
     <span class="eyebrow">Our Practice Areas</span>
     <h2 style="font-size:clamp(1.7rem,4vw,2.5rem);margin-bottom:30px">How we can help you</h2>
     <div class="practice-list">
-      <a class="parea" href="#enquiry" onclick="preselect('Criminal Matter')">
+      <a class="parea" href="practice-areas.html#criminal">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/></svg></span>
         <span class="txt"><b>Criminal Practice</b><span>Defence and prosecution support across all courts.</span></span>
         <span class="chev">›</span>
       </a>
-      <a class="parea" href="#enquiry" onclick="preselect('Civil Litigation')">
+      <a class="parea" href="practice-areas.html#civil">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V8l7-5 7 5v13M9 21v-6h6v6"/></svg></span>
         <span class="txt"><b>Civil Litigation</b><span>Effective representation and dispute resolution.</span></span>
         <span class="chev">›</span>
       </a>
-      <a class="parea" href="#enquiry" onclick="preselect('Military Law')">
+      <a class="parea" href="practice-areas.html#military">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2l2.4 4.8L20 8l-4 3.9.9 5.6L12 14.9 7.1 17.5 8 11.9 4 8l5.6-1.2z"/></svg></span>
         <span class="txt"><b>Military Law</b><span>A rare specialty — counsel on military legal matters.</span></span>
         <span class="chev">›</span>
       </a>
-      <a class="parea" href="#enquiry" onclick="preselect('Corporate / Real Property')">
+      <a class="parea" href="practice-areas.html#admiralty">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="5" r="2.6"/><line x1="12" y1="7.6" x2="12" y2="21"/><line x1="6" y1="10.5" x2="18" y2="10.5"/><path d="M4 13 a8 8 0 0 0 16 0"/></svg></span>
+        <span class="txt"><b>Admiralty Law</b><span>Maritime claims, shipping and admiralty jurisdiction.</span></span>
+        <span class="chev">›</span>
+      </a>
+      <a class="parea" href="practice-areas.html#corporate">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="18" height="13" rx="1"/><path d="M8 7V5a2 2 0 012-2h4a2 2 0 012 2v2"/></svg></span>
         <span class="txt"><b>Corporate &amp; Real Property</b><span>Company matters, land agreements and title issues.</span></span>
         <span class="chev">›</span>
       </a>
-      <a class="parea" href="#enquiry" onclick="preselect('Conveyancing / Change of Ownership')">
+      <a class="parea" href="practice-areas.html#conveyancing">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M14 3H6a2 2 0 00-2 2v14a2 2 0 002 2h12a2 2 0 002-2V9z"/><path d="M14 3v6h6M9 14h6M9 17h4"/></svg></span>
         <span class="txt"><b>Conveyancing</b><span>Property transfer, documentation and perfection of title.</span></span>
         <span class="chev">›</span>
       </a>
-      <a class="parea" href="#enquiry" onclick="preselect('ADR / Settlement')">
+      <a class="parea" href="practice-areas.html#adr">
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M7 11l5-7 5 7M4 21h16M12 4v17"/><circle cx="7" cy="14" r="3"/><circle cx="17" cy="14" r="3"/></svg></span>
-        <span class="txt"><b>Alternative Dispute Resolution</b><span>Mediation, arbitration and negotiated settlement.</span></span>
+        <span class="txt"><b>Alternative Dispute Resolution (ADR)</b><span>Mediation, arbitration and negotiated settlement.</span></span>
         <span class="chev">›</span>
       </a>
     </div>
@@ -246,13 +264,14 @@ footer p{font-size:.82rem;color:var(--muted)}
 <section class="principal" id="principal">
   <div class="wrap pr-grid">
     <div class="pr-photo">
-      <img src="img/principal.webp" alt="Imegu Christopher, Esq. — Principal Counsel, Fadacon and CG Chambers">
+      <img src="img/principal.webp" alt="Christopher Imegu, Esq. — Principal Counsel, Fadacon and CG Chambers">
+      <svg class="scribble" viewBox="0 0 320 46" fill="none"><path d="M6 30 q16 -26 32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0 t32 0" stroke="#E8B84B" stroke-width="11" stroke-linecap="round"/></svg>
     </div>
     <div class="pr-info">
       <span class="eyebrow">Our Principal</span>
-      <h2>Imegu Christopher, Esq.</h2>
+      <h2>Christopher Imegu, Esq.</h2>
       <div class="creds">LL.B · LL.M · B.L &nbsp;|&nbsp; Called to the Nigerian Bar, 2003</div>
-      <p>With over two decades of active legal practice, Imegu Christopher leads the Chambers with deep experience spanning criminal and civil litigation, military law, corporate and real property matters, conveyancing and alternative dispute resolution.</p>
+      <p>With over two decades of active legal practice, Christopher Imegu leads the Chambers with deep experience spanning criminal and civil litigation, military and admiralty law, corporate and real property matters, conveyancing and alternative dispute resolution (ADR).</p>
       <p>His practice is founded on a simple conviction: the law exists to serve people. Every matter the Chambers accepts — from a land agreement to complex litigation — receives the same rigour, candour and personal attention.</p>
       <a class="btn" href="#enquiry" style="margin-top:8px">Consult with Us</a>
     </div>
@@ -264,24 +283,34 @@ footer p{font-size:.82rem;color:var(--muted)}
     <div class="form-card">
       <span class="eyebrow">Book a Consultation</span>
       <h2>Tell us about your matter</h2>
-      <p class="sub">Describe your issue in a few words — land agreement, litigation, change of ownership, or anything else. It goes directly and confidentially to our counsel.</p>
+      <p class="sub">Describe your issue in a few words — land agreement, litigation, change of ownership, or anything else. Your enquiry is delivered directly and confidentially to our counsel.</p>
+      <form action="https://formsubmit.co/imeguchristopher@gmail.com" method="POST">
+      <input type="hidden" name="_subject" value="New Client Enquiry — Fadacon and CG Chambers Website">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="hidden" name="_next" value="https://fadacon-chambers.vercel.app/thanks.html">
       <div class="f-row">
         <label for="f-name">Your Name</label>
-        <input id="f-name" type="text" placeholder="e.g. Adamu Ibrahim" autocomplete="name">
+        <input id="f-name" name="Name" required type="text" placeholder="e.g. Adamu Ibrahim" autocomplete="name">
       </div>
       <div class="f-row">
         <label for="f-phone">Phone Number</label>
-        <input id="f-phone" type="tel" placeholder="e.g. 0803 000 0000" autocomplete="tel">
+        <input id="f-phone" name="Phone" required type="tel" placeholder="e.g. 0803 000 0000" autocomplete="tel">
+      </div>
+      <div class="f-row">
+        <label for="f-email">Email Address <span style="color:var(--muted);text-transform:none">(optional)</span></label>
+        <input id="f-email" name="Email" type="email" placeholder="e.g. you@example.com" autocomplete="email">
       </div>
       <div class="f-row">
         <label for="f-type">Type of Matter</label>
-        <select id="f-type">
+        <select id="f-type" name="Type of Matter">
           <option>Land Agreement</option>
           <option>Litigation</option>
           <option>Change of Ownership / Title</option>
           <option>Criminal Matter</option>
           <option>Civil Litigation</option>
           <option>Military Law</option>
+          <option>Admiralty / Maritime</option>
           <option>Corporate / Real Property</option>
           <option>Conveyancing / Change of Ownership</option>
           <option>ADR / Settlement</option>
@@ -290,14 +319,27 @@ footer p{font-size:.82rem;color:var(--muted)}
       </div>
       <div class="f-row">
         <label for="f-desc">Briefly describe your issue</label>
-        <textarea id="f-desc" placeholder="Tell us what happened and what you need help with…"></textarea>
+        <textarea id="f-desc" name="Description" required placeholder="Tell us what happened and what you need help with…"></textarea>
       </div>
       <div class="f-actions">
-        <button class="btn" onclick="sendWA()">Send via WhatsApp</button>
-        <button class="btn btn-ghost" onclick="sendMail()">Send via Email</button>
+        <button class="btn" type="submit">Submit Enquiry</button>
       </div>
-      <p class="f-note">Your enquiry is treated in strict confidence. Sending an enquiry does not by itself create a solicitor–client relationship.</p>
+      </form>
+      <p class="f-note">Your enquiry is treated in strict confidence. Sending an enquiry does not by itself create a solicitor–client relationship. Prefer to chat? <a href="https://wa.me/2347063415883?text=Good%20day%2C%20I%20would%20like%20to%20consult%20Fadacon%20and%20CG%20Chambers." target="_blank" rel="noopener" style="color:var(--gold)">Reach us on WhatsApp</a>.</p>
     </div>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="wrap">
+    <span class="eyebrow">FAQs</span>
+    <h2 style="font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:28px">Frequently Asked Questions</h2>
+    <details><summary>What areas of law does Fadacon and CG Chambers specialise in?</summary><div class="a">The Chambers is engaged in general criminal and civil practice, military law, admiralty law, corporate and real property matters, conveyancing and alternative dispute resolution (ADR). See our practice areas for detailed write-ups on each.</div></details>
+    <details><summary>How do I book a consultation?</summary><div class="a">Use the "Tell us about your matter" form on this page and our counsel will contact you promptly. You may also call or WhatsApp 0706 341 5883, or visit the Chambers at PEB 04 Plaza, Wuse Zone 5, Abuja.</div></details>
+    <details><summary>Do you handle land agreements and change of ownership?</summary><div class="a">Yes. Property transactions are a core part of our practice — land agreements, conveyancing, documentation, change of ownership and perfection of title.</div></details>
+    <details><summary>Do you handle military legal matters?</summary><div class="a">Yes. Military law is one of our distinctive specialties, and our principal has extensive experience advising and representing clients in military legal matters.</div></details>
+    <details><summary>What should I bring to my first consultation?</summary><div class="a">Bring any documents relevant to your matter — agreements, letters, court processes, receipts or identification. If you are unsure, come with what you have; we will guide you on the rest.</div></details>
+    <details><summary>Is my information kept confidential?</summary><div class="a">Absolutely. All enquiries and consultations are treated in strict professional confidence, in line with our obligations as legal practitioners. See our Privacy Policy for details.</div></details>
   </div>
 </section>
 
@@ -317,6 +359,7 @@ footer p{font-size:.82rem;color:var(--muted)}
   <div class="f-name">Fadacon and CG Chambers — Counsel &amp; Advocates</div>
   <p>RC No. 7965778 · "Service for Humanity"</p>
   <p style="margin-top:8px">© 2026 Fadacon and CG Chambers. All rights reserved.</p>
+  <p style="margin-top:10px"><a href="terms.html" style="color:var(--gold);text-decoration:none">Terms &amp; Conditions</a> &nbsp;·&nbsp; <a href="privacy.html" style="color:var(--gold);text-decoration:none">Privacy Policy</a></p>
 </footer>
 
 <div class="mbar">
@@ -326,25 +369,6 @@ footer p{font-size:.82rem;color:var(--muted)}
 
 <script>
 const mnav=document.getElementById('mnav');
-function preselect(v){const s=document.getElementById('f-type');for(const o of s.options){if(o.text===v){s.value=v;break}}}
-function gather(){
-  const n=document.getElementById('f-name').value.trim();
-  const p=document.getElementById('f-phone').value.trim();
-  const t=document.getElementById('f-type').value;
-  const d=document.getElementById('f-desc').value.trim();
-  if(!n||!p||!d){alert('Please fill in your name, phone number and a brief description.');return null}
-  return {n,p,t,d};
-}
-function sendWA(){
-  const v=gather();if(!v)return;
-  const msg=`NEW CLIENT ENQUIRY — Fadacon and CG Chambers%0A%0AName: ${encodeURIComponent(v.n)}%0APhone: ${encodeURIComponent(v.p)}%0AType of matter: ${encodeURIComponent(v.t)}%0A%0ADescription:%0A${encodeURIComponent(v.d)}`;
-  window.open(`https://wa.me/2347063415883?text=${msg}`,'_blank');
-}
-function sendMail(){
-  const v=gather();if(!v)return;
-  const body=`NEW CLIENT ENQUIRY%0D%0A%0D%0AName: ${encodeURIComponent(v.n)}%0D%0APhone: ${encodeURIComponent(v.p)}%0D%0AType of matter: ${encodeURIComponent(v.t)}%0D%0A%0D%0ADescription:%0D%0A${encodeURIComponent(v.d)}`;
-  window.location.href=`mailto:imeguchristopher@gmail.com?subject=${encodeURIComponent('Client Enquiry — '+v.t)}&body=${body}`;
-}
 </script>
 </body>
 </html>
